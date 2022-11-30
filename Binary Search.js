@@ -1,3 +1,5 @@
+## Iterative Approach
+
 BinarySearch = (sortedArray, value) => {
     
     let length = sortedArray.length;
@@ -29,3 +31,30 @@ BinarySearch( [2, 6, 9, 13, 58,66, 81, 92, 444], 92) // 7
 // It updated the starting and ending index until it finds the element exact position
 // Once the element is equal to the value 
 // We will return the index of the value || we will return -1;
+
+## Recursive Approach
+
+BinarySearch = (sortedArray, start, end, value) => {
+      
+      if(start > end) return -1;
+      
+      let midInd = Math.floor((start + end) / 2);
+      let midElem = sortedArray[midInd];
+      
+      if(value > midElem) { BinarySearch(sortedArray, midInd + 1, end, value)
+      }
+      if (value < midElem) { BinarySearch(sortedArray,start, midInd - 1, value)
+      }
+      
+      if(value === midElem) { console.log(midInd);
+          return midInd;
+      }
+    
+}
+
+let ar = [10, 20, 30, 50, 60, 80, 110, 130, 140, 170] ;
+let len = ar.length
+BinarySearch( [10, 20, 30, 50, 60, 80, 110, 130, 140, 170], 0, len - 1, 170);
+
+// Here we use recursive approach to find the value in array 
+// we call the function number of times recusrively to find the value, if not found it returns -1
