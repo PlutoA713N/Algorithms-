@@ -1,0 +1,18 @@
+function longestSubstring(s) {
+  const map = new Map();
+  let max = 0;
+
+  for (let hi = 0, lo = 0; hi < s.length; hi++) {
+    if (map.has(s[hi]))
+    lo = Math.max(lo, map.get(s[hi]) + 1);
+    map.set(s[hi], hi);
+    max = Math.max(max, hi - lo + 1);
+    console.log(hi, lo, max, map)
+  }
+
+  return max;
+};
+
+longestSubstring('abcdaefg'); // 7 ('bcdaefg')
+longestSubstring('abbaa'); // 2 ('ab')
+longestSubstring('abbadvdf') // 4 ('badv')
